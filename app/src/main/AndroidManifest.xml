@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.gin.xjh.camera">
+
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <!--我们可以在manifest文件中可以看到有一个intent-filter标签，所以我们也可以自己写一个intent-filter来使得应用具有了相机功能。但是当我们设定了一个过滤器，一定要指定一个category，要不然这个intent-filter是不能生效的，这样我们的应用就具备了系统相机的功能。-->
+            <!--<intent-filter>-->
+                <!--<action android:name="android.media.action.IMAGE_CAPTURE" />-->
+
+                <!--<category android:name="android.intent.category.DEFAULT" />-->
+            <!--</intent-filter>-->
+        </activity>
+        <activity android:name=".CustomCamera"/>
+        <activity android:name=".ResultAty"/>
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.gin.xjh.camera.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+    </application>
+
+</manifest>
