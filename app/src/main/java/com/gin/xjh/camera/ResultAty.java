@@ -10,6 +10,7 @@ import android.widget.ImageView;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 /**
  * Created by Gin on 2018/2/5.
@@ -31,7 +32,10 @@ public class ResultAty extends Activity{
             matrix.setRotate(90);
             bitmap = Bitmap.createBitmap(bitmap,0,0,bitmap.getWidth(),bitmap.getHeight(),matrix,true);
             imageView.setImageBitmap(bitmap);
+            fis.close();
         } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
